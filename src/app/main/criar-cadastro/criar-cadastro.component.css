@@ -1,0 +1,65 @@
+.container-fluid {
+  margin: 0;
+  height: 768px;
+  width: 100%;
+  background-color: #7237C5;
+}
+
+.title, h2 {
+  color: #FFFFFF;
+  text-shadow: black 0.1em 0.1em 0.2em;
+}
+
+.btn {
+  background-color: #FFFFFF;
+  margin: 20px 50px;
+  border-radius: 50%;
+}
+
+.btn-audio {
+  width: 80px;
+  height: 80px;
+}
+
+.form-label {
+  color: #ffffff;
+}
+
+.escolher-avatar {
+  background-color: #ffffff;
+  display: inline-block;
+}
+
+.avatar {
+  height: 150px;
+  width: 150px;
+  margin: 5px 60px;
+}
+
+.btn-avatar {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: #FFFFFF;
+}
+
+h1 {
+  display: inline-block;
+}
+
+label {
+  color: #FFFFFF;
+}
+
+.btn-sm {
+  width: 30px;
+  height: 30px;
+  background-color: #7237C5;
+  color: #FFFFFF;
+  margin: 0px 0px 5px 5px;
+}
+
+.fa-question-circle {
+  padding: 0px;
+  margin: 0px;
+}

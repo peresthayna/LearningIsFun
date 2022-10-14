@@ -1,0 +1,36 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="text-center col-12 mt-3">
+      <app-botao-home></app-botao-home>
+      <h1 class="title" (mouseenter)="start(0)">Clique no microfone e diga seu nome</h1><br>
+      <button class="btn btn-audio"><h1><i class="fas fa-microphone"></i></h1></button><br>
+        <h5 style="display: inline-block;"><input class="form-check-input" type="checkbox" [value]="modoProgressao" (change)="selectModoProgressao()" id="modoProgressao"/>
+        <label class="form-check-label" for="modoProgressao" (mouseenter)="start(1)">Jogar com desafio de níveis bloqueados</label></h5>
+        <button type="button" class="btn btn-sm" (mouseenter)="start(2)" (click)="displayDialog()"><i class="fas fa-question-circle"></i></button>
+    </div>
+  </div>
+ 
+  <div class="row">
+    <div class="col-12 mt-1 mb-1">
+      <label for="nome" class="form-label">Nome</label>
+      <input type="text" id="nome" class="form-control" (mouseenter)="start(3)" [(ngModel)]="inputNome">
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-12 text-center">
+      <div class="escolher-avatar">
+        <button class="btn btn-avatar" *ngFor="let avatar of avatares" (click)="verificarCampos(avatar)"><img [src]="avatar" class="avatar"></button>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 text-right">
+      <button class="btn btn-audio" [disabled]="desabilitarBotao" (click)="criarJogador()"><h1><i class="fas fa-arrow-right"></i></h1></button>
+    </div>
+  </div>
+</div>
+
+<p-dialog header="Ajuda" [(visible)]="displayAjuda" [closable]="true" [modal]="true"  (mouseenter)="start(4)">
+  <p>O modo progressão desbloqueia os níveis só quando você passa para a próxima fase.</p>
+  <p>Para jogar com todos os níveis desbloqueados não marque essa opção.</p>
+</p-dialog>

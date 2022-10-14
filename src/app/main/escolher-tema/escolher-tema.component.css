@@ -1,0 +1,22 @@
+.container-fluid {
+  background-color: #7237C5;
+  height: 768px;
+  width: 100%;
+}
+
+h1 {
+  color: #FFFFFF;
+  display: inline-block;
+}
+
+.icons {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+}
+
+p {
+  margin-top: 20px;
+  font-size: 30px;
+  color:aliceblue;
+}

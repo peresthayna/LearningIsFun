@@ -1,0 +1,9 @@
+.btn-home
+{
+  background-color: #ffffff;
+  color: #7237C5;
+  border: none;
+  position: absolute;
+  right: 3em;
+  border-radius: 100%;
+}

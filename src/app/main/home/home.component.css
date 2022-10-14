@@ -1,0 +1,25 @@
+.container-fluid {
+  margin: 0;
+  height: 768px;
+  width: 100%;
+  background-image: url('../../../assets/home/home.png');
+}
+
+.title {
+  margin-top: 6em;
+  color: #FFFFFF;
+  text-shadow: black 0.1em 0.1em 0.2em;
+}
+
+h4 {
+  color: #C0C0C0;
+  margin-bottom: 5em;
+}
+
+.btn {
+  background-color: #FFFFFF;
+  margin: 20px 50px;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}

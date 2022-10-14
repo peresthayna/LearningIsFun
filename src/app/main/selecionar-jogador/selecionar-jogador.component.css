@@ -1,0 +1,29 @@
+.container-fluid {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #7237C5;
+}
+
+.title {
+  color: #FFFFFF;
+  text-shadow: black 0.1em 0.1em 0.2em;
+}
+
+.choice {
+  background-color: #FFFFFF;
+  width: 500px;
+  border: #808080 1px solid;
+}
+
+span {
+  font-size: 24px;
+  margin-left: 20px;
+}
+
+.lock {
+  position: absolute;
+  right: 30em;
+  margin-top: 60px;
+  color: #7237C5;
+}

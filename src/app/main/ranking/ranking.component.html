@@ -1,0 +1,33 @@
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-12 text-center mt-3">
+      <h1 class="title" (mouseenter)="start(999)">Ranking</h1>
+      <app-botao-home></app-botao-home>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-hover table-light mt-5 text-center" *ngIf="jogadores">
+        <thead>
+          <tr>
+            <th>Colocação</th>
+            <th>Nome</th>
+            <th>Pontuação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let jogador of jogadores; let i = index" (mouseenter)="start(i)">
+            <td>
+              <div *ngIf="i >= 0 && i < 3" ><i class="{{ jogador.colocacao }} {{ jogador.cor }}"></i></div>
+              <div *ngIf="i >= 3">{{ jogador.colocacao }}</div>
+            </td> 
+            <td>{{ jogador.nome }}</td>
+            <td>{{ jogador.pontuacao }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

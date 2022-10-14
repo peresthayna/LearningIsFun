@@ -1,0 +1,16 @@
+<div class="container-fluid">
+  <app-perfil-jogador></app-perfil-jogador>
+  <div class="row">
+    <div class="col-12 header mt-3 text-center">
+      <h1>Escolha um tema:</h1>
+      <app-botao-home></app-botao-home>
+    </div>
+  </div>
+  <div class="row text-center mt-5">
+    <div class="col-4 mt-5" *ngFor="let tema of temas" >
+      <button class="btn" (mouseenter)="start(tema.id)"><img [src]="tema.imagem" class="icons" [routerLink]="[tema.rota, tema.id]"></button>
+      <p>{{ tema.descricao }}</p>
+      <p>{{ tema.dificuldade }}</p>
+    </div>
+  </div>
+</div>

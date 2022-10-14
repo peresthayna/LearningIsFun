@@ -1,0 +1,16 @@
+<div class="container-fluid" [style.background-color]="tema.cor">
+  <app-perfil-jogador></app-perfil-jogador>
+  <div class="row">
+    <div class="col-12 header mt-3 text-center">
+      <h1 (mouseenter)="start(1)">Escolha uma fase:</h1>
+      <app-botao-home></app-botao-home>
+      <app-botao-tema></app-botao-tema>
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-4 text-center mt-5" *ngFor="let fase of fases" >
+      <button (mouseenter)="start(fase.id)" [disabled]="fase.bloqueada" [routerLink]="[fase.rota]" routerLinkActive="router-link-active"  [class]="'btn ' + fase.classe"><img [src]="fase.imagem" class="icons"></button>
+      <div class="p"><p [class]="fase.classe">{{ fase.titulo }}</p></div>
+    </div>
+  </div>
+</div>

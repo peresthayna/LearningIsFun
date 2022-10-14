@@ -1,0 +1,18 @@
+.container-fluid {
+  margin: 0;
+  height: 768px;
+  width: 100%;
+  background-color: #F1DC1B;
+}
+
+.title {
+  text-shadow: #ffffff 0.1em 0.1em 0.2em;
+}
+
+h1 {
+  display: inline-block;
+}
+
+body {
+  overflow-y: visible;
+}

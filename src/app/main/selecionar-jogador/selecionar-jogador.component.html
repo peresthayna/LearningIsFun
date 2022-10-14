@@ -1,0 +1,15 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="text-center col-12  mt-3">
+      <app-botao-home></app-botao-home>
+      <h1 class="title" (mouseenter)="start(0)">Selecione um Jogador</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="text-center mt-5 col-12">
+      <div *ngFor="let jogador of jogadores">
+        <button class="text-left btn choice" (mouseenter)="start(jogador.id)" (click)="selecionarJogador(jogador)"><img [src]="jogador.avatar"><span>{{ jogador.nome }}</span><i [class]="'lock fas ' + (jogador.modoProgressao ? 'fa-lock' : 'fa-lock-open')"></i></button>
+      </div>
+    </div>
+  </div>
+</div>

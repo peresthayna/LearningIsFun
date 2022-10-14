@@ -1,0 +1,18 @@
+<div class="container-fluid">
+  <app-perfil-jogador [podeRecarregar]="recarregar"></app-perfil-jogador>
+  <div class="text-center mt-3" style="color: #FFFFFF;">
+    <app-botao-home></app-botao-home>
+    <app-botao-tema></app-botao-tema>
+    <h2>Vamos montar o quebra-cabeças</h2>
+    <p>Arrastar as peças na ordem correta</p>
+    <div cdkDropListGroup class="text-center mt-3">
+      <div class="container">
+        <div cdkDropList [cdkDropListData]="puzzles" class="puzzle-list" (cdkDropListDropped)="drop($event)">
+          <img *ngFor="let puzzle of puzzles" cdkDrag [src]="puzzle.imagem" [cdkDragDisabled]="todosCorretos">
+        </div>
+      </div>
+    </div>
+    <app-botao-proximo [isDesativado]="proximoDesativado"></app-botao-proximo>
+    <app-dialog-congrats [ativarDialog]="ativarDialog"></app-dialog-congrats>
+  </div>
+</div>

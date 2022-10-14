@@ -1,0 +1,10 @@
+<div *ngIf="jogador">
+  <div class="text-left container row">
+    <img [src]="jogador.avatar" class="col-6">
+    <div style="display: inline-block;" class="col-6">
+      <p>{{ jogador.nome }}</p>
+      <p>{{ jogador.pontuacao }} <i class="fas fa-star"></i></p>
+      <p>{{ jogador.moedas }} <i class="fas fa-coins"></i></p>
+    </div>
+  </div>
+</div>
