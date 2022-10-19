@@ -1,40 +1,42 @@
 import { FaseService } from './../../shared/service/fase.service';
 import { ProximaFaseService } from './../../shared/service/proxima-fase.service';
-import { Jogador } from './../../shared/models/jogador.model';
-import { JogadorService } from './../../shared/service/jogador.service';
 import { EmbaralharListaService } from './../../shared/service/embaralha-lista.service';
-import { Puzzle } from '../shared/model/puzzle.model';
+import { JogadorService } from './../../shared/service/jogador.service';
+import { Jogador } from 'src/app/shared/models/jogador.model';
 import { Component, OnInit } from '@angular/core';
+import { Puzzle } from '../shared/model/puzzle.model';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
-  selector: 'app-bio-fase1',
-  templateUrl: './bio-fase1.component.html',
-  styleUrls: ['./bio-fase1.component.css','../shared/style.css']
+  selector: 'app-bio-fase2',
+  templateUrl: './bio-fase2.component.html',
+  styleUrls: ['./bio-fase2.component.css','../shared/style.css']
 })
-export class BioFase1Component implements OnInit {
+export class BioFase2Component implements OnInit {
 
   public puzzles: Puzzle[] = [
-    {imagem:'./../../../assets/bio/1/puzzle-1.png', posicaoCorreta: 0},
-    {imagem:'./../../../assets/bio/1/puzzle-2.png', posicaoCorreta: 1},
-    {imagem:'./../../../assets/bio/1/puzzle-3.png', posicaoCorreta: 2}];
-  public acertou: boolean[] = [false, false, false];
-  public todosCorretos: boolean;
+    {imagem:'./../../../assets/bio/2/puzzle-1.png', posicaoCorreta: 0},
+    {imagem:'./../../../assets/bio/2/puzzle-2.png', posicaoCorreta: 1},
+    {imagem:'./../../../assets/bio/2/puzzle-3.png', posicaoCorreta: 2},
+    {imagem:'./../../../assets/bio/2/puzzle-4.png', posicaoCorreta: 3},
+    {imagem:'./../../../assets/bio/2/puzzle-5.png', posicaoCorreta: 4}];
+  public acertou: boolean[] = [false, false, false, false, false, false];
+  public todosCorretos: boolean = false;
   public jogador: Jogador = new Jogador();
   public proximoDesativado: boolean = true;
   public ativarDialog: boolean = false;
-  public idFaseAtual: number = 10;
+  public idFaseAtual: number = 11;
 
   constructor(
-    private embaralhaListaService: EmbaralharListaService,
     private jogadorService: JogadorService,
+    private embaralharListaService: EmbaralharListaService,
     private proximaFaseService: ProximaFaseService,
-    private faseService: FaseService) {}
+    private faseService: FaseService) { }
 
-  ngOnInit(): void {
-    this.jogadorService.getJogadorAtivo().subscribe(jogadores => this.jogador = jogadores[0]);
+  ngOnInit() {
+    this.jogadorService.getJogadorAtivo().subscribe(jogador => this.jogador = jogador[0]);
     while(this.verificaPosicaoInicialArray()) {
-      this.embaralhaListaService.embaralhaLista(this.puzzles);
+      this.embaralharListaService.embaralhaLista(this.puzzles);
     }
   }
 
@@ -51,8 +53,9 @@ export class BioFase1Component implements OnInit {
 
   public verificaPosicaoInicialArray(): boolean {
     for(let i=0; i< this.puzzles.length; i++){
-      if(this.puzzles[i].posicaoCorreta !== i)
-      { return false; }
+      if(this.puzzles[i].posicaoCorreta !== i) { 
+        return false; 
+      }
     }
     return true;
   }

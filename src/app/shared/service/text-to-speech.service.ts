@@ -23,17 +23,10 @@ export class TextToSpeechService {
         'voice':'Google português do Brasil',
         'splitSentences': true,
         'listeners': {
-          'onvoiceschanged': (voices) => {
-            console.log("Event voiceschanged", voices)
-          }
+          'onvoiceschanged': () => {}
         }
-      }).then((data) => {
-        console.log("Speech is ready, voices are available", data)
-        this.speechData = data;
-        data.voices.forEach(voice => {
-          console.log(voice.name + " "+ voice.lang)
-        });
-      }).catch(e => {
+      }).then((data) => this.speechData = data
+      ).catch(e => {
         console.error("An error occured while initializing : ", e)
       })
     }

@@ -23,5 +23,8 @@ export class Jogador {
     this.medalha = '';
     this.ativo = true;
     this.modoProgressao = false;
+    this.faseAtual = new Fase();
+    this.faseAtual.id = 10;
+    this.faseAtual.idTema = 1;
   }
 }

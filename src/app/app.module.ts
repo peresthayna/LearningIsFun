@@ -21,6 +21,11 @@ import { BotaoTemaComponent } from './shared/botao-tema/botao-tema.component';
 import { BioFase1Component } from './biologia/bio-fase1/bio-fase1.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { DialogCongratsComponent } from './shared/dialog-congrats/dialog-congrats.component';
+import { BioFase2Component } from './biologia/bio-fase2/bio-fase2.component';
+import { BotaoDicaComponent } from './shared/botao-dica/botao-dica.component';
+import { BotaoVoltarComponent } from './shared/botao-voltar/botao-voltar.component';
+import { BioFase3Component } from './biologia/bio-fase3/bio-fase3.component';
+import { BioFase4Component } from './biologia/bio-fase4/bio-fase4.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +42,11 @@ import { DialogCongratsComponent } from './shared/dialog-congrats/dialog-congrat
     BotaoTemaComponent,
     BioFase1Component,
     DialogCongratsComponent,
+    BioFase2Component,
+    BotaoDicaComponent,
+    BotaoVoltarComponent,
+    BioFase3Component,
+    BioFase4Component,
   ],
   imports: [
     AppRoutingModule,

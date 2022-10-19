@@ -38,20 +38,6 @@ export class SelecionarJogadorComponent implements OnInit {
       .subscribe(jogadores => this.jogadores = jogadores);
   }
 
-  public selecionarJogadora(jogadorSelecionado: Jogador) {
-    this.jogadores.forEach((jogador: Jogador) => {
-      if (jogador.id != jogadorSelecionado.id) {
-        jogador.ativo = false;
-      } else {
-        jogador.ativo = true;
-      }
-    });
-    this.jogadorService.atualizarJogadores(this.jogadores).subscribe(
-      () => this.router.navigate(['/escolherTema']),
-      () => console.log('Erro ao atualizar status do jogador')
-    );
-  }
-
   public selecionarJogador(jogadorSelecionado: Jogador) {
     this.jogadores.forEach((jogador: Jogador) => {
       if (jogador.id != jogadorSelecionado.id) {
@@ -61,7 +47,6 @@ export class SelecionarJogadorComponent implements OnInit {
       }
     });
     this.salvarJogadores(this.jogadores);
-    this.faseService.getFases();
   }
 
   public salvarJogadores(jogadores: Jogador[]) {

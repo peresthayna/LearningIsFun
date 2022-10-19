@@ -1,3 +1,6 @@
+import { BioFase4Component } from './biologia/bio-fase4/bio-fase4.component';
+import { BioFase3Component } from './biologia/bio-fase3/bio-fase3.component';
+import { BioFase2Component } from './biologia/bio-fase2/bio-fase2.component';
 import { BioFase1Component } from './biologia/bio-fase1/bio-fase1.component';
 import { EscolherFaseComponent } from './main/escolher-fase/escolher-fase.component';
 import { SelecionarJogadorComponent } from './main/selecionar-jogador/selecionar-jogador.component';
@@ -16,6 +19,9 @@ const routes: Routes = [
   { path: 'escolherFase/:id', component: EscolherFaseComponent },
   { path: 'selecionarJogador', component: SelecionarJogadorComponent },
   { path: 'escolherFase/1/bio-fase-1', component: BioFase1Component },
+  { path: 'escolherFase/1/bio-fase-2', component: BioFase2Component },
+  { path: 'escolherFase/1/bio-fase-3', component: BioFase3Component },
+  { path: 'escolherFase/1/bio-fase-4', component: BioFase4Component },
   
 ];
 

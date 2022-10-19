@@ -1,12 +1,15 @@
-.btn-next
+.btn-hint
 {
   background-color: #ffffff;
   color: #7237C5;
   border: none;
   position: absolute;
-  right: 3em;
+  right: 13em;
   border-radius: 100%;
-  margin-top: 1em;
   width: 70px;
   height: 70px;
+}
+
+.fa-thumbs-up, .fa-thumbs-down {
+  color: #7237C5;
 }

@@ -1,0 +1,31 @@
+<div class="container-fluid">
+  <app-perfil-jogador></app-perfil-jogador>
+  <div class="text-center mt-3" style="color: #FFFFFF;">
+    <app-botao-dica></app-botao-dica>
+    <app-botao-home></app-botao-home>
+    <app-botao-tema></app-botao-tema>
+    <h2>Vamos identificar as partes do corpo</h2>
+    <p>Arrastar as partes para a posição correta.</p>
+  </div>
+  <div class="row body" cdkDropListGroup>
+      <div class="col-6">
+        <div class="drop-place">
+          <div *ngFor="let drop of listaDrop" [ngStyle]="{'margin-top':drop.posicaoY, 'margin-left':drop.posicaoX}">
+            <div class="drop icons" cdkDropList [cdkDropListData]="drop.puzzleList" (cdkDropListDropped)="dropResposta($event, drop)">
+            <img *ngFor="let puzzle of drop.puzzleList" cdkDrag [src]="puzzle.imagem" class="icons">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="text-center">
+          <div class="puzzle-list" cdkDropList [cdkDropListData]="partesDoCorpo" (cdkDropListDropped)="drop($event)">
+            <img *ngFor="let parte of partesDoCorpo" cdkDrag [src]="parte.imagem" class="icons">
+          </div>
+        </div>
+    </div>
+  </div>
+    <app-botao-voltar></app-botao-voltar>
+    <app-botao-proximo [isDesativado]="proximoDesativado" (click)="proximaFase()" [routerLink]="['/escolherFase/1/bio-fase-3']"></app-botao-proximo>
+    <app-dialog-congrats [ativarDialog]="ativarDialog"></app-dialog-congrats>
+</div>

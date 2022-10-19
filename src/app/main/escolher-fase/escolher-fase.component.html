@@ -8,7 +8,7 @@
     </div>
   </div>
   <div class="row text-center">
-    <div class="col-4 text-center mt-5" *ngFor="let fase of fases" >
+    <div class="col-4 text-center mt-5" *ngFor="let fase of fases">
       <button (mouseenter)="start(fase.id)" [disabled]="fase.bloqueada" [routerLink]="[fase.rota]" routerLinkActive="router-link-active"  [class]="'btn ' + fase.classe"><img [src]="fase.imagem" class="icons"></button>
       <div class="p"><p [class]="fase.classe">{{ fase.titulo }}</p></div>
     </div>

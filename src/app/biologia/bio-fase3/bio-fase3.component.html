@@ -1,0 +1,22 @@
+<div class="container-fluid">
+  <app-perfil-jogador></app-perfil-jogador>
+  <div class="text-center mt-3" style="color: #FFFFFF;">
+    <app-botao-dica></app-botao-dica>
+    <app-botao-home></app-botao-home>
+    <app-botao-tema></app-botao-tema>
+    <h2>Vamos marcar quantos temos</h2>
+    <p>Clicar nos quadrados para representar a quantidade</p>
+  </div>
+  <div class="container">
+    <div class="row mt-5">
+      <div class="box col-6 mt-3" *ngFor="let parte of partesDoCorpo">
+        <img [src]="parte.imagem">
+        <input type="checkbox" [(ngModel)]="parte.checkbox[0]" class="checkbox" (change)="mudouValor(parte)">
+        <input type="checkbox" [(ngModel)]="parte.checkbox[1]" class="checkbox" (change)="mudouValor(parte)">
+      </div>
+    </div>
+  </div>
+  <app-botao-voltar></app-botao-voltar>
+  <app-botao-proximo [isDesativado]="!acertouTudo" (click)="proximaFase()" [routerLink]="['/escolherFase/1/bio-fase-4']"></app-botao-proximo>
+  <app-dialog-congrats [ativarDialog]="displayDialog"></app-dialog-congrats>
+</div>

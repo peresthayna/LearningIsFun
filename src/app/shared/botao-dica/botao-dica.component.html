@@ -1,0 +1,9 @@
+<button type="button" class="btn-hint" (mouseenter)="start(0)" (click)="dica()"><h1><i class="fas fa-lightbulb"></i></h1></button>
+
+<p-dialog header="Dica" (mouseenter)="start(1)" [(visible)]="displayDialog" [modal]="true" [style]="{width: '50vw'}" [draggable]="false" [resizable]="false">
+  <p>Deseja comprar uma dica por 50 moedas?</p>
+  <p-footer>
+    <button type="button" class="btn"><h2><i class="fas fa-thumbs-up"></i></h2></button>
+    <button type="button" class="btn" (click)="fecharDica()"><h2><i class="fas fa-thumbs-down"></i></h2></button>
+  </p-footer>
+</p-dialog>

@@ -16,6 +16,7 @@ export class CriarCadastroComponent implements OnInit {
   public avatares: string[] = [];
   public inputNome: string;
   public jogador: Jogador = new Jogador;
+  public jogadores: Jogador[] = [];
   public desabilitarBotao: boolean = true;
   public modoProgressao: boolean = false;
   public displayAjuda: boolean = false;
@@ -28,6 +29,7 @@ export class CriarCadastroComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+    this.jogadorService.getJogadores().subscribe(j => this.jogadores = j);
     this.carregarAvatares();
     this.textToSpeechService.textToSpeech();
   }
@@ -73,26 +75,41 @@ export class CriarCadastroComponent implements OnInit {
     if(this.verificarNome()) {
       this.jogador.nome = this.inputNome;
       this.jogador.avatar = avatar;
-      console.log(this.modoProgressao)
       this.jogador.modoProgressao = this.modoProgressao;
       this.jogador.faseAtual = new Fase();
-      this.jogador.faseAtual.id = 1;
+      this.jogador.faseAtual.id = 10;
       this.jogador.faseAtual.idTema = 1;
+      this.jogador.ativo = true;
       this.desabilitarBotao = false;
     }
   }
 
   public criarJogador() {
+    this.jogadores.forEach((jogador: Jogador) => jogador.ativo = false);
+    this.salvarJogadores(this.jogadores);
     this.jogadorService.criarJogador(this.jogador)
     .subscribe(
       () => this.router.navigate(['/escolherTema']),
       () => alert('Erro ao criar jogador!')
     )
-    this.faseService.getFases();
   }
 
   public displayDialog() {
     this.displayAjuda = !this.displayAjuda;
+  }
+
+  public salvarJogadores(jogadores: Jogador[]) {
+    if(jogadores.length === 0) {
+      return;
+    }
+    let jogador = jogadores.shift();
+    this.jogadorService.atualizarJogador(jogador).subscribe(
+      () => {
+        const jogadoresSeguintes = jogadores.filter(j => j.id !== jogador.id);
+        this.salvarJogadores(jogadoresSeguintes);
+        },
+      () => console.log('Erro ao atualizar status do jogador')
+    );
   }
 
 

@@ -1,9 +1,10 @@
+import { JogadorService } from 'src/app/shared/service/jogador.service';
+import { Jogador } from 'src/app/shared/models/jogador.model';
 import { TextToSpeechService } from './../../shared/service/text-to-speech.service';
-import { filter, map } from 'rxjs/operators';
 import { FaseService } from './../../shared/service/fase.service';
 import { TemaService } from './../../shared/service/tema.service';
 import { Fase } from 'src/app/shared/models/fase.model';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Tema } from 'src/app/shared/models/tema.model';
 import { ActivatedRoute } from '@angular/router';
 
@@ -16,21 +17,23 @@ export class EscolherFaseComponent implements OnInit {
 
   public tema: Tema = new Tema();
   public fases: Fase[] = [];
+  public jogador: Jogador = new Jogador();
 
   constructor(
     private route: ActivatedRoute, 
     private temaService: TemaService,
     private faseService: FaseService,
-    private textToSpeechService: TextToSpeechService
+    private textToSpeechService: TextToSpeechService,
+    private jogadorService: JogadorService
   ) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       let id = params['id'];
       this.temaService.getTemas().subscribe((tema => tema.filter(t => t.id == id ? this.tema = t : null)))
-      this.fases = this.faseService.getFasesTema(id);
+      this.jogadorService.getJogadorAtivo().subscribe(j => this.fases = this.faseService.getFasesTema(id, j[0]));
     });
-    this.textToSpeechService.textToSpeech();
+      this.textToSpeechService.textToSpeech();
   }
   
   public start(n: number): void {

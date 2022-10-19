@@ -1,5 +1,4 @@
 import { TextToSpeechService } from './../../shared/service/text-to-speech.service';
-import { FaseService } from './../../shared/service/fase.service';
 import { TemaService } from './../../shared/service/tema.service';
 import { Component, OnInit } from '@angular/core';
 import { Tema } from 'src/app/shared/models/tema.model';
@@ -15,11 +14,9 @@ export class EscolherTemaComponent implements OnInit {
 
   constructor(
     private temaService: TemaService,
-    private faseService: FaseService,
     private textToSpeechService: TextToSpeechService) { }
 
   ngOnInit(): void {
-    this.faseService.getFases();
     this.temaService.getTemas().subscribe(
       t => this.temas = t,
       () => console.log('Erro ao recuperar temas')

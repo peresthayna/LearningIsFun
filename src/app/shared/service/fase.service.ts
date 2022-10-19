@@ -9,22 +9,19 @@ import { Jogador } from '../models/jogador.model';
 export class FaseService {
 
   public fases: Fase[] = [];
-  public jogador: Jogador = new Jogador();
 
-  constructor(private jogadorService: JogadorService) { }
+  constructor() { }
 
-  public getFases(): Fase[] {
-    this.jogadorService.getJogadores().subscribe((jogadores: Jogador[]) =>
-    jogadores.forEach((jogador: Jogador) => jogador.ativo ? this.jogador = jogador : null))
-    let index = 0;
+  public getFases(jogador: Jogador): Fase[] {
+    let index = 0; 
     for(let tema=1; tema<4; tema++) {
       for(let fase=0; fase<5; fase++) {
         this.fases[index] = new Fase();
         this.fases[index].id = +(tema.toString() + fase);
         this.fases[index].idTema = tema;
         this.fases[index].classe = 'coluna-' + this.fases[index].id;
-        if(this.jogador.modoProgressao) {
-          if(this.jogador.faseAtual.id > index) {
+        if(jogador.modoProgressao) {
+          if(jogador.faseAtual.id >= (index + (tema * 10))) {
             this.fases[index].imagem = '/assets/fases/' + this.fases[index].id + '.png';
             this.fases[index].bloqueada = false;
           } else {
@@ -47,14 +44,17 @@ export class FaseService {
     this.fases[1].nome = 'Vamos montar o quebra-cabeça';
     this.fases[1].descricao = 'Arrastar as peças na ordem correta';
     this.fases[1].dificuldade = 'Fácil';
+    this.fases[1].rota = 'bio-fase-2';
     this.fases[2].titulo = 'Quantidades';
     this.fases[2].nome = 'Vamos marcar quantos temos';
     this.fases[2].descricao = 'Clicar nos quadrados para representar a quantidade';
     this.fases[2].dificuldade = 'Fácil';
+    this.fases[2].rota = 'bio-fase-3';
     this.fases[3].titulo = 'Identificar';
     this.fases[3].nome = 'Vamos identificar as partes do corpo';
     this.fases[3].descricao = 'Arrastar as partes para a posição correta';
     this.fases[3].dificuldade = 'Médio';
+    this.fases[3].rota = 'bio-fase-4';
     this.fases[4].titulo = 'Objetos';
     this.fases[4].nome = 'Vamos relacionar os objetos ao corpo';
     this.fases[4].descricao = 'Arrastar as partes para a posição correta.';
@@ -103,9 +103,9 @@ export class FaseService {
     return this.fases;
   }
   
-  public getFasesTema(idTema: number): Fase[] {
+  public getFasesTema(idTema: number, jogador: Jogador): Fase[] {
     let fases: Fase[] = [];
-    this.getFases().forEach(f => {
+    this.getFases(jogador).forEach(f => {
       if(f.idTema == idTema) {
         fases.push(f);
       }

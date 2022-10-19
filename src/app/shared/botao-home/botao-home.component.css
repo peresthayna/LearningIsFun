@@ -6,4 +6,6 @@
   position: absolute;
   right: 3em;
   border-radius: 100%;
+  width: 70px;
+  height: 70px;
 }
